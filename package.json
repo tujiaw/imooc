@@ -1,0 +1,23 @@
+{
+  "name": "imooc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "express": "^4.13.3",
+    "install": "^0.1.8",
+    "jade": "^1.11.0",
+    "moment": "^2.10.6",
+    "mongoose": "^4.1.1",
+    "multer": "^1.0.3",
+    "npm": "^2.13.4",
+    "path": "^0.11.14",
+    "underscore": "^1.8.3"
+  }
+}
