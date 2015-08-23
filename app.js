@@ -17,9 +17,9 @@ var User = require('./model/user');
 var app = express();
 var port = process.env.PORT || 3000;
 
-mongoose.connect('mongodb://localhost/imooc')
+mongoose.connect('mongodb://localhost/imooc');
 
-app.set('views', './views/pages')
+app.set('views', './views/pages');
 app.set('view engine', 'jade');
 app.locals.moment = require('moment');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -56,7 +56,6 @@ app.get('/movie/:id', function(req, res) {
                 movie: movie
             });
         }
-
     });
 });
 
