@@ -23,103 +23,39 @@ block content
          .col-sm-12.col-md-12
             p.pull-right.visible-xs
                button.btn.btn-primary.btn-xs(type="button", data-toggle="offcanvas") Toggle nav
+            br
+            br
             .jumbotron
-               h2 Hello, world!
-               p.
-                  This is an example to show the potential of an offcanvas layout pattern in Bootstrap,
-                  Try some responsive-range viewport sizes to see it in action.
+               #carousel-blog-generic.carousel.slide(data-ride="carousel")
+                  ol.carousel-indicators
+                     li.active(data-target="#carousel-blog-generic", data-slide-to="0")
+                     li(data-target="#carousel-blog-generic", data-slide-to="1")
+                     li(data-target="#carousel-blog-generic", data-slide-to="2")
+                  div.carousel-inner(role="listbox")
+                     div.item.active
+                        img(src="../../images/slide1.png", alt="First slide")
+                     div.item
+                        img(src="../../images/slide1.png", alt="Second slide")
+                     div.item
+                        img(src="../../images/slide1.png", alt="Third slide")
+                  a.left.carousel-control(href="#carousel-blog-generic", role="button", data-slide="prev")
+                     span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
+                     span.sr-only Previous
+                  a.right.carousel-control(href="#carousel-blog-generic", role="button", data-slide="next")
+                     span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+                     span.sr-only Next
             .col-sm-6.col-md-8
-               .row
-                  h2 Heading
-                  p.
-                     Donec id elit non mi porta gravida at eget metus.Fusce dapibus, tellus ac cursus commodo,
-                     tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam
-                     porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                  p
-                     a.btn.btn-default(href="#", role="button") View details &raquo;
-               .row
-                  h2 Heading
-                  p.
-                     Donec id elit non mi porta gravida at eget metus.Fusce dapibus, tellus ac cursus commodo,
-                     tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam
-                     porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                  p
-                     a.btn.btn-default(href="#", role="button") View details &raquo;
-               .row
-                  h2 Heading
-                  p.
-                     Donec id elit non mi porta gravida at eget metus.Fusce dapibus, tellus ac cursus commodo,
-                     tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam
-                     porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                  p
-                     a.btn.btn-default(href="#", role="button") View details &raquo;
-               .row
-                  h2 Heading
-                  p.
-                     Donec id elit non mi porta gravida at eget metus.Fusce dapibus, tellus ac cursus commodo,
-                     tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam
-                     porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                  p
-                     a.btn.btn-default(href="#", role="button") View details &raquo;
-               .row
-                  h2 Heading
-                  p.
-                     Donec id elit non mi porta gravida at eget metus.Fusce dapibus, tellus ac cursus commodo,
-                     tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam
-                     porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                  p
-                     a.btn.btn-default(href="#", role="button") View details &raquo;
-               .row
-                  h2 Heading
-                  p.
-                     Donec id elit non mi porta gravida at eget metus.Fusce dapibus, tellus ac cursus commodo,
-                     tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam
-                     porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                  p
-                     a.btn.btn-default(href="#", role="button") View details &raquo;
-               .row
-                  h2 Heading
-                  p.
-                     Donec id elit non mi porta gravida at eget metus.Fusce dapibus, tellus ac cursus commodo,
-                     tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam
-                     porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                  p
-                     a.btn.btn-default(href="#", role="button") View details &raquo;
-               .row
-                  h2 Heading
-                  p.
-                     Donec id elit non mi porta gravida at eget metus.Fusce dapibus, tellus ac cursus commodo,
-                     tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam
-                     porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                  p
-                     a.btn.btn-default(href="#", role="button") View details &raquo;
-               .row
-                  h2 Heading
-                  p.
-                     Donec id elit non mi porta gravida at eget metus.Fusce dapibus, tellus ac cursus commodo,
-                     tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam
-                     porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                  p
-                     a.btn.btn-default(href="#", role="button") View details &raquo;
-               .row
-                  h2 Heading
-                  p.
-                     Donec id elit non mi porta gravida at eget metus.Fusce dapibus, tellus ac cursus commodo,
-                     tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam
-                     porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                  p
-                     a.btn.btn-default(href="#", role="button") View details &raquo;
+               each item in posts
+                  .row
+                     h2 #{item.title}
+                     p #{item.content}
+                     p
+                        a.btn.btn-default(href="#", role="button") 显示更多 &raquo;
             .col-sm-6.col-md-4.sidebar-offcanvas#sidebar
                .list-group
-                  a.list-group-item.active(href="#") Link
-                  a.list-group-item(href="#") Link
-                  a.list-group-item(href="#") Link
-                  a.list-group-item(href="#") Link
-                  a.list-group-item(href="#") Link
-                  a.list-group-item(href="#") Link
-                  a.list-group-item(href="#") Link
-                  a.list-group-item(href="#") Link
-                  a.list-group-item(href="#") Link
+                  each item in category
+                     a.list-group-item.active(href="#") #{item.text}
+                     a.list-group-item(href="#") Link
       hr
       footer
          p &copy; Company 2015

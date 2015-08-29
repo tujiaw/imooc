@@ -1,0 +1,21 @@
+//
+   Created by tujiaw on 15/8/29.
+
+extends ../frame
+block content
+   .container
+      h3.text-center(style="padding-left:100px") 写一篇新博客吧！
+      .row
+         form.form-horizontal(method="post", action="/admin/write_post/new")
+            input(type="hidden", name="post[_id]", value="#{post._id}")
+            .form-group
+               label.col-sm-2.control-label(for="inputTitle") 文章标题
+               .col-sm-10
+                  input#inputTitle.form-control(type="text", name="post[title]", value="#{post.title}")
+            .form-group
+               label.col-sm-2.control-label(for="inputContent") 文章内容
+               .col-sm-10
+                  textarea#inputContent.form-control(type="text", rows="20", name="post[content]", value="#{post.content}")
+            .form-group
+               .col-sm-offset-2.col-sm-10
+                  button.btn.btn-default(type="submit") 录入
