@@ -33,11 +33,11 @@ block content
                      li(data-target="#carousel-blog-generic", data-slide-to="2")
                   div.carousel-inner(role="listbox")
                      div.item.active
-                        img(src="../../images/slide1.png", alt="First slide")
+                        img(src="/images/slide1.png", alt="First slide")
                      div.item
-                        img(src="../../images/slide1.png", alt="Second slide")
+                        img(src="/images/slide1.png", alt="Second slide")
                      div.item
-                        img(src="../../images/slide1.png", alt="Third slide")
+                        img(src="/images/slide1.png", alt="Third slide")
                   a.left.carousel-control(href="#carousel-blog-generic", role="button", data-slide="prev")
                      span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
                      span.sr-only Previous
@@ -48,14 +48,14 @@ block content
                each item in posts
                   .row
                      h2 #{item.title}
-                     p #{item.content}
+                     p #{item.profile}
                      p
                         a.btn.btn-default(href="#", role="button") 显示更多 &raquo;
             .col-sm-6.col-md-4.sidebar-offcanvas#sidebar
                .list-group
-                  each item in category
-                     a.list-group-item.active(href="#") #{item.text}
-                     a.list-group-item(href="#") Link
+                  each item in categories
+                     //a.list-group-item.active(href="#") #{item.text}
+                     a.list-group-item(href="#") #{item.name}
       hr
       footer
          p &copy; Company 2015

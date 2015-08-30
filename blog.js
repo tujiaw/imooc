@@ -9,6 +9,7 @@ var _ = require('underscore');
 var mongoose = require('mongoose');
 var Post = require('./model/post');
 var Tag = require('./model/tag');
+var Category = require('./model/category');
 
 var app = express();
 var port = process.env.PORT || 3333;
@@ -20,7 +21,6 @@ app.set('view engine', 'jade');
 app.locals.moment = require('moment');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.listen(port);
 
@@ -30,28 +30,40 @@ function Link() {
     this.text = "";
 }
 app.get('/', function(req, res) {
-    var links = new Array({text:"first"}, {text:"second"}, {text:"third"});
-    Post.find().sort({updateTime:-1}).limit(10).exec(function(err, posts) {
+    Post.find().sort({updateTime:-1}).limit(15).exec(function(err, posts) {
         if (err) {
             console.error(err);
         } else {
-            res.render('post', {
-                title: 'tjw blog',
-                posts: posts,
-                category: links
-            })
+            Category.find().exec(function(err, categories) {
+                if (err) {
+                    console.error(err);
+                } else {
+                    res.render('post', {
+                        title: 'tjw blog',
+                        posts: posts,
+                        categories: categories
+                    });
+                }
+            });
         };
     });
 });
 
 app.get('/admin/write_post', function(req, res) {
-   res.render('write_post', {
-       title: 'write post',
-       post: {
-           title: '',
-           content: ''
-       }
-   });
+    Category.find().exec(function(err, categories) {
+        if (err) {
+            console.error(err);
+        } else {
+            res.render('write_post', {
+                title: 'write post',
+                post: {
+                    title: '',
+                    content: '',
+                },
+                categories: categories
+            });
+        }
+    });
 });
 
 app.post('/admin/write_post/new', function(req, res) {
@@ -72,16 +84,32 @@ app.post('/admin/write_post/new', function(req, res) {
             }
         });
     } else {
+        post.profile = post.content.substr(0, 300);
         _post = new Post({
             title: post.title,
-            content: post.content
+            profile: post.profile,
+            content: post.content,
+            category: post.category
         });
         _post.save(function(err, postData) {
             if (err) {
                 console.error(err);
             } else {
-                //res.redirect('/post/' + postData._id);
+                res.redirect('/');
             }
         });
     }
+});
+
+app.get('/admin/category', function(req, res) {
+    Category.find().exec(function(err, categories) {
+        if (err) {
+            console.error(err);
+        } else {
+            res.render('category', {
+                title: 'category',
+                categories: categories
+            });
+        }
+    });
 });

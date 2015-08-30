@@ -5,7 +5,6 @@
 var mongoose = require('mongoose');
 
 var TagSchema = mongoose.Schema({
-    _id: Number,
     name: String,
     frequency: Number
 });

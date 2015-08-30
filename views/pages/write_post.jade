@@ -10,12 +10,28 @@ block content
             input(type="hidden", name="post[_id]", value="#{post._id}")
             .form-group
                label.col-sm-2.control-label(for="inputTitle") 文章标题
-               .col-sm-10
-                  input#inputTitle.form-control(type="text", name="post[title]", value="#{post.title}")
+               .col-sm-1
+                  button.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown", id="dropdownMenu1") 类别
+                     span.caret
+                  ul.dropdown-menu.dropdown-menu-left(role="menu", aria-labelledby="dropdownMenu1")
+                     li
+                        each item in categories
+                           a(role="menuitem", tabindex="-1", href="#") #{item.name}
+                     if categories.length > 0
+                        li.divider(role="separator")
+                     li
+                        a(role="menuothers", tabindex="-1", href="#") 其他
+               .col-sm-9
+                  input#inputTitle.form-control(type="text", name="post[title]", value="#{post.title}", required autofocus)
             .form-group
                label.col-sm-2.control-label(for="inputContent") 文章内容
                .col-sm-10
-                  textarea#inputContent.form-control(type="text", rows="20", name="post[content]", value="#{post.content}")
+                  textarea#inputContent.form-control(type="text", rows="20", name="post[content]", value="#{post.content}", required)
+            .form-group
+               label.col-sm-2.control-label(for="inputCategory") 添加文章类别
+               .col-sm-8
+                  input#inputCategory.form-control(type="text", name="newCatetory", required)
+               button.btn.btn-default#addCategory(type="button") 添加
             .form-group
                .col-sm-offset-2.col-sm-10
-                  button.btn.btn-default(type="submit") 录入
+                  button.btn.btn-success(type="submit") 录入
