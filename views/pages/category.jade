@@ -6,6 +6,11 @@ block content
    h3.text-center 文章类别管理页面
    .container
       .row
+         .col-md-4.input-group
+            input.form-control#inputCategory(type="text", placeholder="请输入新的类别名称")
+            span.input-group-btn
+               button.btn.btn-primary#addCategory(type="button") 添加
+      .row
          table.table.table-hover.table-hordered
             thead
                tr
@@ -21,12 +26,7 @@ block content
                      td #{item.count}
                      td: a(target="_blank", href="#{item._id}") 查看
                      td
-                        button.btn.btn-warning.update(type="button", item-id="#{item._id}") 更新
+                        button.btn.btn-warning.update(type="button", data-id="#{item._id}") 更新
                      td
-                        button.btn.btn-danger.del(type="button", item-id="#{item._id}") 删除
-      .row
-         .col-md-4.input-group
-            input.form-control(type="text", placeholder="请输入新的类别名称")
-            span.input-group-btn
-               button.btn.btn-primary#addCategory(type="button") 添加
-script(type="text/javascript" src="/js/category.js")
+                        button.btn.btn-danger.del(type="button", data-id="#{item._id}") 删除
+   script(src="/js/category.js")

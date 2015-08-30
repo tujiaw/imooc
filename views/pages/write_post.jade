@@ -10,8 +10,8 @@ block content
             input(type="hidden", name="post[_id]", value="#{post._id}")
             .form-group
                label.col-sm-2.control-label(for="inputTitle") 文章标题
-               .col-sm-1
-                  button.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown", id="dropdownMenu1") 类别
+               .col-sm-2
+                  button.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown", id="dropdownMenu1") 请选择文章类别&nbsp&nbsp
                      span.caret
                   ul.dropdown-menu.dropdown-menu-left(role="menu", aria-labelledby="dropdownMenu1")
                      li
@@ -21,17 +21,12 @@ block content
                         li.divider(role="separator")
                      li
                         a(role="menuothers", tabindex="-1", href="#") 其他
-               .col-sm-9
+               .col-sm-8
                   input#inputTitle.form-control(type="text", name="post[title]", value="#{post.title}", required autofocus)
             .form-group
                label.col-sm-2.control-label(for="inputContent") 文章内容
                .col-sm-10
                   textarea#inputContent.form-control(type="text", rows="20", name="post[content]", value="#{post.content}", required)
-            .form-group
-               label.col-sm-2.control-label(for="inputCategory") 添加文章类别
-               .col-sm-8
-                  input#inputCategory.form-control(type="text", name="newCatetory", required)
-               button.btn.btn-default#addCategory(type="button") 添加
             .form-group
                .col-sm-offset-2.col-sm-10
                   button.btn.btn-success(type="submit") 录入

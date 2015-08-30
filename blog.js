@@ -113,3 +113,35 @@ app.get('/admin/category', function(req, res) {
         }
     });
 });
+
+app.post('/admin/category/add', function(req, res) {
+    console.log("post add category");
+    var newName = req.body.name;
+    if (newName !== 'undefined') {
+        console.log(newName);
+        var _category = new Category({
+            name: newName,
+            count:0
+        });
+        _category.save(function(err, results) {
+            if (err) {
+                console.error(err);
+            } else {
+                res.json({name: newName});
+            }
+        });
+    }
+});
+
+app.delete('/admin/category', function(req, res) {
+    var delId = req.query.id;
+    if (delId) {
+        Category.remove({_id: delId}, function(err, category) {
+            if (err) {
+                console.error(err);
+            } else {
+                res.json({success: 1});
+            }
+        })
+    }
+});
