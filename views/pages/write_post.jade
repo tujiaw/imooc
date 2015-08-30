@@ -10,19 +10,18 @@ block content
             input(type="hidden", name="post[_id]", value="#{post._id}")
             .form-group
                label.col-sm-2.control-label(for="inputTitle") 文章标题
-               .col-sm-2
-                  button.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown", id="dropdownMenu1") 请选择文章类别&nbsp&nbsp
-                     span.caret
-                  ul.dropdown-menu.dropdown-menu-left(role="menu", aria-labelledby="dropdownMenu1")
-                     li
-                        each item in categories
-                           a(role="menuitem", tabindex="-1", href="#") #{item.name}
-                     if categories.length > 0
-                        li.divider(role="separator")
-                     li
-                        a(role="menuothers", tabindex="-1", href="#") 其他
-               .col-sm-8
+               .col-sm-7
                   input#inputTitle.form-control(type="text", name="post[title]", value="#{post.title}", required autofocus)
+               .col-sm-3
+                  div.btn-group.dropdown
+                     input#inputCategory(type="hidden", name="post[category]", value="#{post.category}")
+                     button.btn.btn-primary#categoryMenu(type="button") 请选择文章类别
+                     button.btn.btn-primary.dropdown_toggle(type="button", data-toggle="dropdown")
+                        span.caret
+                     ul.dropdown-menu(role="menu", aria-labelledby="dropdownMenu1")
+                        li
+                           each item in categories
+                              a.dropdown-toggle(role="menuitem", data-toggle="dropdown", tabindex="-1", href="#") #{item.name}
             .form-group
                label.col-sm-2.control-label(for="inputContent") 文章内容
                .col-sm-10
@@ -30,3 +29,4 @@ block content
             .form-group
                .col-sm-offset-2.col-sm-10
                   button.btn.btn-success(type="submit") 录入
+   script(src="/js/write_post.js")

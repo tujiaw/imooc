@@ -5,7 +5,10 @@ var mongoose = require('mongoose');
 
 var CategorySchema = new mongoose.Schema(
     {
-        name: String,
+        name: {
+            unique: true,
+            type: String
+        },
         count: Number
     }
 );

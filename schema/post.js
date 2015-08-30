@@ -7,7 +7,7 @@ var PostSchema = mongoose.Schema({
     title: String,
     profile: String,
     content: String,
-    category: Number,
+    category: String,
     tags: [Number],
     createTime: Date,
     updateTime: Date,

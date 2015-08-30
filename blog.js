@@ -5,6 +5,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var moment = require('moment');
+var async = require('async');
 var _ = require('underscore');
 var mongoose = require('mongoose');
 var Post = require('./model/post');
@@ -59,6 +60,7 @@ app.get('/admin/write_post', function(req, res) {
                 post: {
                     title: '',
                     content: '',
+                    category:''
                 },
                 categories: categories
             });
@@ -85,6 +87,7 @@ app.post('/admin/write_post/new', function(req, res) {
         });
     } else {
         post.profile = post.content.substr(0, 300);
+        console.log(post.category);
         _post = new Post({
             title: post.title,
             profile: post.profile,
@@ -95,6 +98,14 @@ app.post('/admin/write_post/new', function(req, res) {
             if (err) {
                 console.error(err);
             } else {
+                Category.findOne({name: post.category}, function(err, category) {
+                    if (err) {
+                        console.error(err);
+                    } else if (category) {
+                        var count = category.count + 1;
+                        Category.findOneAndUpdate({name: post.category}, {count: count}, function(err, data) {});
+                    }
+                });
                 res.redirect('/');
             }
         });
@@ -134,9 +145,9 @@ app.post('/admin/category/add', function(req, res) {
 });
 
 app.delete('/admin/category', function(req, res) {
-    var delId = req.query.id;
-    if (delId) {
-        Category.remove({_id: delId}, function(err, category) {
+    var delName = req.query.name;
+    if (delName) {
+        Category.remove({name: delName}, function(err, category) {
             if (err) {
                 console.error(err);
             } else {

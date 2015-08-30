@@ -21,12 +21,12 @@ block content
                   th 删除
             tbody
                each item in categories
-                  tr(class="item-id-#{item._id}")
+                  tr(class="item-name-#{item.name}")
                      td #{item.name}
                      td #{item.count}
-                     td: a(target="_blank", href="#{item._id}") 查看
+                     td: a(target="_blank", href="#{item.name}") 查看
                      td
-                        button.btn.btn-warning.update(type="button", data-id="#{item._id}") 更新
+                        button.btn.btn-warning.update(type="button", data-name="#{item.name}") 更新
                      td
-                        button.btn.btn-danger.del(type="button", data-id="#{item._id}") 删除
+                        button.btn.btn-danger.del(type="button", data-name="#{item.name}") 删除
    script(src="/js/category.js")

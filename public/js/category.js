@@ -19,11 +19,11 @@ $(function() {
 
     $('.del').click(function(e) {
         var target = $(e.target);
-        var id = target.data('id');
-        var tr = $('.item-id-' + id);
+        var name = target.data('name');
+        var tr = $('.item-name-' + name);
         $.ajax({
             type: 'DELETE',
-            url: '/admin/category?id=' + id
+            url: '/admin/category?name=' + name
         }).done(function(results) {
             if (results.success === 1) {
                 if (tr.length > 0) {
