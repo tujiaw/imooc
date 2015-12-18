@@ -1,0 +1,12 @@
+//
+   Created by jiawei.tu on 12/17 0017.
+
+
+extends ../frame
+block content
+   <h1 style="text-align:center">#{title}</h1>
+   <HR style="border:1 dashed #987cb9" width="80%" color=#987cb9 SIZE=1>
+   .container#postContent
+         //#{postContent}
+         label.hidden#tempPostContent #{postContent}
+   script(src="/js/show_post.js")

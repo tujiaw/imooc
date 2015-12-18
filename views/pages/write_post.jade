@@ -25,7 +25,8 @@ block content
             .form-group
                label.col-sm-2.control-label(for="inputContent") 文章内容
                .col-sm-10
-                  textarea#inputContent.form-control(type="text", rows="20", name="post[content]", value="#{post.content}", required)
+                  //textarea#inputContent.form-control(type="text", rows="20", name="post[content]", value="#{post.content}", required)
+                  textarea.form-control(name="post[content]", id="post[content]", rows="20", cols="80", required)
             .form-group
                .col-sm-offset-2.col-sm-10
                   button.btn.btn-success(type="submit") 录入

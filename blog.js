@@ -68,6 +68,25 @@ app.get('/admin/write_post', function(req, res) {
     });
 });
 
+function escape2Html(str) {
+    var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+    return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+}
+
+app.get('/show_post/:id', function(req, res) {
+    var id = req.params.id;
+    Post.findById(id, function(err, post) {
+        if (err) {
+            console.log(err);
+        } else {
+            post.content = escape2Html(post.content);
+            res.render('show_post', {
+                title: post.title,
+                postContent: post.content
+            });
+        }
+    });
+});
 app.post('/admin/write_post/new', function(req, res) {
     var id = req.body.post._id;
     var post = req.body.post;
@@ -87,7 +106,7 @@ app.post('/admin/write_post/new', function(req, res) {
         });
     } else {
         post.profile = post.content.substr(0, 300);
-        console.log(post.category);
+        post.profile = post.profile.replace(/<[^>]+>/g, '');
         _post = new Post({
             title: post.title,
             profile: post.profile,

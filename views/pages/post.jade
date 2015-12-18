@@ -27,14 +27,14 @@ block content
                   a.right.carousel-control(href="#carousel-blog-generic", role="button", data-slide="next")
                      span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
                      span.sr-only Next
-            .col-sm-6.col-md-8
+            .col-sm-10.col-md-10
                each item in posts
                   .row
                      h2 #{item.title}
                      p #{item.profile}
                      p
-                        a.btn.btn-default(href="#", role="button") 显示更多 &raquo;
-            .col-sm-6.col-md-4.sidebar-offcanvas#sidebar
+                        a.btn.btn-default#gotoShowPost(href="/show_post/#{item._id}", role="button") 显示更多 &raquo;
+            .col-sm-2.col-md-2.sidebar-offcanvas#sidebar
                .list-group
                   each item in categories
                      a.list-group-item(href="#") #{item.name}
